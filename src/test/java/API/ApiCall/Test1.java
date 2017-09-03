@@ -28,7 +28,14 @@ public class Test1 {
 		
 		Collection<ClienteTest> clientes = new Vector<ClienteTest>();
 		Collection<Thread> tClientes = new Vector<Thread>();
-		
+		/*
+		 *El test se basa en tirar 10 threads concurrentes al callcenter.
+		 *El servicio del callcenter está configurado para atender hasta 10 llamadas a la vez (configuración del temaño del pool). 
+		 *En caso de entrar mas, se encolaran.
+		 *Adicionalmente a esto, solo tiene en total 8 recursos para que atiendan el telefono (5 operarios, 2 supervisores, 1 director) Igualmente se pueden configurar los que se deseen.
+		 *Con lo que al ejecutar el test, a 2 de los 10 que entren se los van a dejar en espera con la leyenda "Nuestros operarios están ocupados, espere por favor".
+		 *
+		 */
 		for (int i =0; i<10 ; i++){
 			ClienteTest cl = new ClienteTest(i);
 			clientes.add(cl);

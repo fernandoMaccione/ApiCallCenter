@@ -16,7 +16,10 @@ public class Server implements Runnable {
 	
 	@Override
 	public void run() {
-		while(true)startServer();
+		while(true){
+			startServer();
+			LogError.logInfo("Se detuvo el servicio. Se iniciará automaticamente.");
+		}
 	}
 
 	private void startServer(){
