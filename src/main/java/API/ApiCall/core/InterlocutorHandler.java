@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.Writer;
+import java.math.BigDecimal;
 import java.net.Socket;
 
 import API.ApiCall.configuracion.Configuracion;
@@ -48,13 +49,15 @@ public class InterlocutorHandler implements Runnable{
 	}
 	private void conversar() throws IOException, InterruptedException {
 		escribirMensaje(empl.saludo());
-		Thread.sleep(getEspera());
+		long espera = getEspera();
+		escribirMensaje("Esta conversación va a durar " + String.valueOf(espera /1000)+" segundos...");
+		Thread.sleep(espera);
 		escribirMensaje ("Muchas gracias por comunicarse con nostros.");
 		
 	}
 	
 	private long getEspera() {
-		return (long) Math.random() * 10000 + 5000; //calculo un tiempo de duracion de conversación aleatorio según requerimiento del ejercicio
+		return BigDecimal.valueOf((Math.random() * 5000 + 5000)).longValue(); //calculo un tiempo de duracion de conversación aleatorio según requerimiento del ejercicio
 	}
 	public void escribirMensaje(String mensaje) throws IOException{
 		out.write(mensaje + "\n");

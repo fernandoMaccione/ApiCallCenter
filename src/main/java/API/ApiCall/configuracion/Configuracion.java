@@ -51,7 +51,7 @@ public class Configuracion {
 		instance.totalSupervisores = 2;
 		instance.totalOperarios = 5;
 		instance.timeOut = 10000;
-		instance.pool = 10; //hasta 10 llamadas concurrentes, segun consigna
+		instance.pool = 10; //hasta 10 llamadas concurrentes, segun consigna. Si llegan, se atienden y se encolan los Threads
 	}
 	public int getTimeOut() {
 		return timeOut;
